@@ -16,6 +16,7 @@ class GetInCompletedTaskView extends StatelessWidget {
         builder: (context, child) {
           List<TaskModel> taskList = context.watch<List<TaskModel>>();
           return ListView.builder(
+            itemCount: taskList.length,
             itemBuilder: (context, i) {
               return ListTile(
                 leading: Icon(Icons.task),
