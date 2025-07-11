@@ -1,4 +1,6 @@
+import 'package:fltuter_b16/models/priority.dart';
 import 'package:fltuter_b16/models/task.dart';
+import 'package:fltuter_b16/services/priority.dart';
 import 'package:fltuter_b16/services/task.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +18,23 @@ class _CreateTaskViewState extends State<CreateTaskView> {
 
   bool isLoading = false;
 
+  List<PriorityModel> priorityList = [];
+  PriorityModel? _selectedPriority;
+
+  getPriorities() {
+    PriorityServices().getAllFuturePriorities().then((val) {
+      priorityList = val;
+      setState(() {});
+    });
+  }
+
+
+  @override
+  void initState() {
+    getPriorities();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +44,24 @@ class _CreateTaskViewState extends State<CreateTaskView> {
           TextField(controller: titleController),
           SizedBox(height: 20),
           TextField(controller: descriptionController),
+          SizedBox(height: 20),
+          DropdownButton(
+            items: priorityList
+                .map(
+                  (priority) => DropdownMenuItem(
+                    value: priority,
+                    child: Text(priority.name.toString()),
+                  ),
+                )
+                .toList(),
+            isExpanded: true,
+            hint: Text("Select Priority"),
+            value: _selectedPriority,
+            onChanged: (val) {
+              _selectedPriority = val;
+              setState(() {});
+            },
+          ),
           SizedBox(height: 20),
           isLoading
               ? Center(child: CircularProgressIndicator())
@@ -50,6 +87,7 @@ class _CreateTaskViewState extends State<CreateTaskView> {
                             TaskModel(
                               title: titleController.text,
                               description: descriptionController.text,
+                              priorityID: _selectedPriority!.docId,
                               isCompleted: false,
                               createdAt: DateTime.now().millisecondsSinceEpoch,
                             ),

@@ -3,6 +3,7 @@ import 'package:fltuter_b16/services/task.dart';
 import 'package:fltuter_b16/views/create_task.dart';
 import 'package:fltuter_b16/views/get_completed_task.dart';
 import 'package:fltuter_b16/views/get_in_completed_task.dart';
+import 'package:fltuter_b16/views/get_priorities.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -34,6 +35,15 @@ class GetAllTaskView extends StatelessWidget {
               );
             },
             icon: Icon(Icons.incomplete_circle),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => GetPrioritiesView()),
+              );
+            },
+            icon: Icon(Icons.filter_list_outlined),
           ),
         ],
       ),
