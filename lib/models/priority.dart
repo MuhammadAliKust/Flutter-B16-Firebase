@@ -4,7 +4,8 @@
 
 import 'dart:convert';
 
-PriorityModel priorityModelFromJson(String str) => PriorityModel.fromJson(json.decode(str));
+PriorityModel priorityModelFromJson(String str) =>
+    PriorityModel.fromJson(json.decode(str));
 
 String priorityModelToJson(PriorityModel data) => json.encode(data.toJson());
 
@@ -13,11 +14,7 @@ class PriorityModel {
   final String? name;
   final int? createdAt;
 
-  PriorityModel({
-    this.docId,
-    this.name,
-    this.createdAt,
-  });
+  PriorityModel({this.docId, this.name, this.createdAt});
 
   factory PriorityModel.fromJson(Map<String, dynamic> json) => PriorityModel(
     docId: json["docID"],

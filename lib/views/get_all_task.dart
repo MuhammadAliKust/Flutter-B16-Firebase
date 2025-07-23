@@ -38,10 +38,10 @@ class GetAllTaskView extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => GetPrioritiesView()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => GetPrioritiesView()),
+              // );
             },
             icon: Icon(Icons.filter_list_outlined),
           ),

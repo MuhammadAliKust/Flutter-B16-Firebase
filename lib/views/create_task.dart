@@ -22,12 +22,11 @@ class _CreateTaskViewState extends State<CreateTaskView> {
   PriorityModel? _selectedPriority;
 
   getPriorities() {
-    PriorityServices().getAllFuturePriorities().then((val) {
-      priorityList = val;
-      setState(() {});
-    });
+    // PriorityServices().getAllFuturePriorities().then((val) {
+    //   priorityList = val;
+    //   setState(() {});
+    // });
   }
-
 
   @override
   void initState() {
