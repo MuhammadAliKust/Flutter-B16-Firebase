@@ -1,5 +1,6 @@
 import 'package:fltuter_b16/views/get_all_task.dart';
 import 'package:fltuter_b16/views/get_priorities.dart';
+import 'package:fltuter_b16/views/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: GetAllPriorities(),
+      home: LoginView(),
     );
   }
 }
