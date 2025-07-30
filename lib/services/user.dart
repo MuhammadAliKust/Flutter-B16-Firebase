@@ -18,4 +18,16 @@ class UserServices {
         .get()
         .then((user) => UserModel.fromJson(user.data()!));
   }
+
+  ///Update Profile
+  Future updateProfile(UserModel model) async {
+    return await FirebaseFirestore.instance
+        .collection('userCollection')
+        .doc(model.docId)
+        .update({
+          'name': model.name,
+          'phone': model.phone,
+          'address': model.address,
+        });
+  }
 }

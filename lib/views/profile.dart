@@ -1,4 +1,5 @@
 import 'package:fltuter_b16/provider/user.dart';
+import 'package:fltuter_b16/views/update_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +28,17 @@ class ProfileView extends StatelessWidget {
           Text(
             "Email: ${userProvider.getUser().email.toString()}",
             style: TextStyle(fontSize: 40),
+          ),
+          SizedBox(height: 30),
+
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UpdateProfileView()),
+              );
+            },
+            child: Text("Update Profile"),
           ),
         ],
       ),
